@@ -1,0 +1,6 @@
+use_frameworks!
+target 'RxColor_Tests' do
+  pod 'RxColor', :path => '../'
+  
+  
+end
