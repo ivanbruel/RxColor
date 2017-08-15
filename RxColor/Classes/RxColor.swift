@@ -9,39 +9,35 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-public extension UILabel {
+extension Reactive where Base: UILabel {
 
-	public var rx_textColor: AnyObserver<UIColor> {
-		return UIBindingObserver(UIElement: self) { label, color in
-			label.textColor = color
-		}.asObserver()
-	}
-
+    public var textColor: UIBindingObserver<Base, UIColor?> {
+        return UIBindingObserver<Base, UIColor?>(UIElement: self.base) { (label, color) -> () in
+            label.textColor = color
+        }
+    }
 }
 
-public extension UIButton {
+extension Reactive where Base: UIButton {
 
-	public var rx_titleColor: AnyObserver<UIColor> {
-		return UIBindingObserver(UIElement: self) { button, color in
-			button.setTitleColor(color, for: .normal)
-		}.asObserver()
-	}
-
-	public var rx_color: AnyObserver<UIColor> {
-		return UIBindingObserver(UIElement: self) { button, color in
-			button.setTitleColor(color, for: .normal)
-			button.tintColor = color
-		}.asObserver()
-	}
-
+    public func titleColor(for controlState: UIControlState = []) -> UIBindingObserver<Base, UIColor?> {
+        return UIBindingObserver<Base, UIColor?>(UIElement: self.base) { (button, color) -> () in
+            button.setTitleColor(color, for: controlState)
+        }
+    }
 }
 
-public extension UIView {
+extension Reactive where Base: UIView {
 
-	public var rx_backgroundColor: AnyObserver<UIColor> {
-		return UIBindingObserver(UIElement: self) { view, color in
-			view.backgroundColor = color
-		}.asObserver()
-	}
+    public var backgroundColor: UIBindingObserver<Base, UIColor?> {
+        return UIBindingObserver<Base, UIColor?>(UIElement: self.base) { (view, color) -> () in
+            view.backgroundColor = color
+        }
+    }
 
+    public var tintColor: UIBindingObserver<Base, UIColor?> {
+        return UIBindingObserver<Base, UIColor?>(UIElement: self.base) { (view, color) -> () in
+            view.tintColor = color
+        }
+    }
 }

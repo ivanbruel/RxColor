@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RxColor'
-  s.version          = '1.1.0'
+  s.version          = '2.0'
   s.summary          = 'RxSwift bindings for common UIColor setters'
 
 # This description is used to generate tags and improve search results.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 RxSwift bindings for common UIColor setters.
-UIView (backgroundColor), UILabel (textColor) and UIButton (titleColor and tintColor+titleColor)
+UIView (backgroundColor, tintColor), UILabel (textColor) and UIButton (titleColor)
                        DESC
 
   s.homepage         = 'https://github.com/ivanbruel/RxColor'
@@ -33,6 +33,6 @@ UIView (backgroundColor), UILabel (textColor) and UIButton (titleColor and tintC
 
   s.source_files = 'RxColor/Classes/**/*'
 
-  s.dependency 'RxSwift', '~> 3.0'
-  s.dependency 'RxCocoa', '~> 3.0'
+  s.dependency 'RxSwift', '~> 3.6'
+  s.dependency 'RxCocoa', '~> 3.6'
 end
